@@ -15,7 +15,7 @@ class RSA_simple:
         num1=html_tag.xpath('/html/body/form/center/input[1]')[0].value
         html_tag=self.get_html_tag(base_URL+prime2[0].attrib['href'])
         num2=html_tag.xpath('/html/body/form/center/input[1]')[0].value
-        return num1,num2 
+        return int(num1),int(num2) 
        
     def try_fermat(self,n,e):
         return self.fernmat(n)
