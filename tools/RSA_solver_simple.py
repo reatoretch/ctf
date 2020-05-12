@@ -10,6 +10,9 @@ e=65537
 try_functions=[solver.try_factordb,solver.try_WinersAttack,solver.try_fermat,solver.try_factorial_from2]
 
 
+print('n is ',n)
+print('e is ',e)
+
 p,q=0,0
 for func in try_functions:
     print('try..')
