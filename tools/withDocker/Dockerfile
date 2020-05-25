@@ -12,7 +12,9 @@ RUN apt-get install -y strace ltrace curl
 #install python
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
-#install java
+RUN pip3 install opencv-python requests pwntools 
+
+#install javaa
 RUN apt-get update
 RUN apt-get install -y openjdk-8-jre
 RUN apt-get install -y openjdk-8-jdk
@@ -46,7 +48,6 @@ WORKDIR /root/tools
 RUN wget https://github.com/slimm609/checksec.sh/archive/1.6.tar.gz
 RUN tar zxvf 1.6.tar.gz
 RUN cp checksec.sh-1.6/checksec /bin/checksec.sh
-
 
 
 CMD ["/bin/bash"]
