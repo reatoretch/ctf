@@ -1,4 +1,18 @@
 # pwn reversin に関するメモ writeupなど？
+
+## gdb の使い方!
+```
+gdb -q -ex 'set disassembly-flavor intel' -ex 'disp/i $pc' binary
+```
+
+便利コマンド
+```
+layout asm  # とりあえず同時にdisas結果を載せる
+ni          # 関数内に入らないnext
+p $rax      # raxを表示
+```
+
+
 ## buffer over flow
 そもそも文字列の入力長がチェックされない関数を使っている
 returnアドレスや他の変数などが書き換えられる
