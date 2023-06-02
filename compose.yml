@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  ctf:
+    container_name: ctf
+    build:
+      context: .
+      dockerfile: ./dockerfiles/ctf/Dockerfile
+    ports:
+      - '6553:6553'
+    volumes:
+      - ./storage:/home/retch
+    working_dir: /home/retch 
+    tty: true
