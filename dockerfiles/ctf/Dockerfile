@@ -27,6 +27,7 @@ RUN apt-get install -y \
 
 # Install utils
 RUN apt-get install -y \
+    netcat-traditional \
     file \
     vim \
     git
